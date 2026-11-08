@@ -1,0 +1,78 @@
+{
+  "source": "JesunAhmadUshno/data-engineering-scale-lab results/checksums.json (Track B2, closed 2026-11-07)",
+  "note": "Run-1 SHA-256 per (scale, transformation). During setup, all three B2 arms (duckdb, spark, dbt) were verified to agree on all 18 run-1 cells; the spark arm values are copied here as the reference.",
+  "records": [
+    {
+      "sf": 0.1,
+      "transformation": "t1",
+      "sha256": "c203b801a10376194bb1da26f007e9fb359c1c55b22e1b5cdc956d8ca1a2195a",
+      "rows": 91800
+    },
+    {
+      "sf": 0.1,
+      "transformation": "t2",
+      "sha256": "59358b009fecb2a345deca3cbc22e8b816212ebffd9556c178726d0e2c5c0046",
+      "rows": 600572
+    },
+    {
+      "sf": 0.1,
+      "transformation": "t3",
+      "sha256": "efe7438004b1c13ac6b82c92a1f65da40dd4dc3212ad2c55e328dad240886826",
+      "rows": 2406
+    },
+    {
+      "sf": 0.1,
+      "transformation": "t4",
+      "sha256": "426a355b7f543f7a5009869a39f4e8bb8b843c754fbd8081297bd0d14837e73a",
+      "rows": 600572
+    },
+    {
+      "sf": 0.1,
+      "transformation": "t5",
+      "sha256": "fcf43c05e0ca28b7aeaec7d69401bd275f4e408ef279fab97e4a42dd5da40f10",
+      "rows": 600572
+    },
+    {
+      "sf": 0.1,
+      "transformation": "t6",
+      "sha256": "382c91eee48b2845702d6066528a88e516bae8b77d0f4141d65f7e674fd90f64",
+      "rows": 10
+    },
+    {
+      "sf": 1.0,
+      "transformation": "t1",
+      "sha256": "d61bb9d23170d9730af4324a9905b231e70c5d4bddcf77ad87b60804c2afe3fe",
+      "rows": 914963
+    },
+    {
+      "sf": 1.0,
+      "transformation": "t2",
+      "sha256": "9086bff07254c91492cb1d96983f4d218d8483650569a203e96b6fcfa99b014f",
+      "rows": 6001215
+    },
+    {
+      "sf": 1.0,
+      "transformation": "t3",
+      "sha256": "1ee9c0917008e2f381f851c73683e101d396147c004086e98b62f235eec94c87",
+      "rows": 2406
+    },
+    {
+      "sf": 1.0,
+      "transformation": "t4",
+      "sha256": "563a6afe76dc3860470f53f26455af3e628e7e8965ad3448e0aa3ddd42882ff5",
+      "rows": 6001215
+    },
+    {
+      "sf": 1.0,
+      "transformation": "t5",
+      "sha256": "462af94018b49cb9e3b8529d480a936a2efa600c7fcba9a66ee2d5ccf2fcbd45",
+      "rows": 6001215
+    },
+    {
+      "sf": 1.0,
+      "transformation": "t6",
+      "sha256": "cb8bda1b3e58144ce61e16dc8d29a4fe49605de720d1793566430776473d77a3",
+      "rows": 10
+    }
+  ]
+}

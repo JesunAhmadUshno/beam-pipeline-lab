@@ -1,0 +1,4 @@
+apache-beam==2.77.0
+duckdb==2.0.0
+pyarrow==25.0.1
+pytest==9.1.1
