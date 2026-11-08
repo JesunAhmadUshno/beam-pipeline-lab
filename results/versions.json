@@ -1,0 +1,10 @@
+{
+  "python": "3.12.3",
+  "apache_beam": "2.77.0",
+  "duckdb": "2.0.0",
+  "pyarrow": "25.0.1",
+  "platform": "linux",
+  "machine": "x86_64",
+  "hostname": "htch-runtime",
+  "os": "Linux-7.0.0-43-generic-x86_64-with-glibc2.39"
+}

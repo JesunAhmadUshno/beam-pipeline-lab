@@ -24,6 +24,22 @@ protocol.
   same names as B2's arm outputs (t1.parquet, and so on). The
   canonical checksum reads the same logical rows regardless of file
   layout.
+- D6 (2026-11-08): Each run subprocess first executes one uncounted
+  empty pipeline (the setup pre-roll in src/run_beam.py), and its
+  seconds are logged as that run's setup record. Reason: in Beam
+  2.77 the DirectRunner submits to a local runner service whose
+  start costs about 20 s (measured: five empty-pipeline samples,
+  20.2 to 20.7 s of run time each). D1's subprocess isolation meant
+  that start would otherwise land inside T1's timed region on every
+  run, attributing a service start to a transformation and inflating
+  the H3 spread. B2's protocol put the equivalent cost in setup
+  (its Spark setup figure includes a first action, and its timed
+  runs executed in the warm session); the warm-up pass in
+  PREREGISTRATION.md Section 7 exists to remove exactly this class
+  of cold-start cost. The pre-roll changes no timed region, no
+  verdict rule, and no output; the pre-matrix smoke run at SF0.1
+  (T1 30.9 s with the service start inside it) is superseded by the
+  matrix runs and is not reported as a result.
 - D5 (2026-11-08): Peak memory is sampled from the run's process
   tree (sum of VmRSS over descendants, 0.25 s sampling) by
   scripts/run_matrix.py, because GNU time is not installed on the

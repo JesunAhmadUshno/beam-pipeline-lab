@@ -50,6 +50,20 @@ def run_transformation(key, inputs, out_prefix):
     return time.perf_counter() - started
 
 
+def run_setup_preroll():
+    """One uncounted empty pipeline, so the runner service start lands
+    in setup, not inside T1's timed region (DECISIONS.md D6). B2's
+    protocol did the same thing in the other direction: its setup
+    figure includes a first action, and its timed runs executed in the
+    warm session. Returns the seconds the empty run took."""
+    pipeline = beam.Pipeline(options=PipelineOptions(["--runner=DirectRunner"]))
+    _ = pipeline | beam.Create([]) | beam.Map(lambda x: x)
+    started = time.perf_counter()
+    result = pipeline.run()
+    result.wait_until_finish()
+    return time.perf_counter() - started
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--sf", type=float, required=True)
@@ -74,6 +88,14 @@ def main():
         "t5": (lineitem, orders),
         "t6": (str(out_dir / "t3.parquet"), str(out_dir / "t4.parquet")),
     }
+
+    setup_seconds = run_setup_preroll()
+    log_run({
+        "arm": "beam", "sf": args.sf, "transformation": "setup",
+        "run": args.run, "seconds": round(setup_seconds, 4), "rows_out": None,
+        "beam_setup": "runner_service_start_empty_pipeline",
+    })
+    print(f"sf{label} run{args.run} setup: {setup_seconds:.3f}s", flush=True)
 
     for key in ORDER:
         out_prefix = str(out_dir / key)
