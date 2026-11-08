@@ -119,6 +119,136 @@
       "rows": 10,
       "rows_checked": 10,
       "partial": false
+    },
+    {
+      "arm": "beam",
+      "sf": 1.0,
+      "transformation": "t1",
+      "run": 1,
+      "sha256": "d61bb9d23170d9730af4324a9905b231e70c5d4bddcf77ad87b60804c2afe3fe",
+      "rows": 914963,
+      "rows_checked": 914963,
+      "partial": false
+    },
+    {
+      "arm": "beam",
+      "sf": 1.0,
+      "transformation": "t2",
+      "run": 1,
+      "sha256": null,
+      "rows": null,
+      "rows_checked": 0,
+      "partial": true,
+      "missing": true
+    },
+    {
+      "arm": "beam",
+      "sf": 1.0,
+      "transformation": "t3",
+      "run": 1,
+      "sha256": null,
+      "rows": null,
+      "rows_checked": 0,
+      "partial": true,
+      "missing": true
+    },
+    {
+      "arm": "beam",
+      "sf": 1.0,
+      "transformation": "t4",
+      "run": 1,
+      "sha256": null,
+      "rows": null,
+      "rows_checked": 0,
+      "partial": true,
+      "missing": true
+    },
+    {
+      "arm": "beam",
+      "sf": 1.0,
+      "transformation": "t5",
+      "run": 1,
+      "sha256": null,
+      "rows": null,
+      "rows_checked": 0,
+      "partial": true,
+      "missing": true
+    },
+    {
+      "arm": "beam",
+      "sf": 1.0,
+      "transformation": "t6",
+      "run": 1,
+      "sha256": null,
+      "rows": null,
+      "rows_checked": 0,
+      "partial": true,
+      "missing": true
+    },
+    {
+      "arm": "beam",
+      "sf": 1.0,
+      "transformation": "t1",
+      "run": 5,
+      "sha256": "d61bb9d23170d9730af4324a9905b231e70c5d4bddcf77ad87b60804c2afe3fe",
+      "rows": 914963,
+      "rows_checked": 914963,
+      "partial": false
+    },
+    {
+      "arm": "beam",
+      "sf": 1.0,
+      "transformation": "t2",
+      "run": 5,
+      "sha256": null,
+      "rows": null,
+      "rows_checked": 0,
+      "partial": true,
+      "missing": true
+    },
+    {
+      "arm": "beam",
+      "sf": 1.0,
+      "transformation": "t3",
+      "run": 5,
+      "sha256": null,
+      "rows": null,
+      "rows_checked": 0,
+      "partial": true,
+      "missing": true
+    },
+    {
+      "arm": "beam",
+      "sf": 1.0,
+      "transformation": "t4",
+      "run": 5,
+      "sha256": null,
+      "rows": null,
+      "rows_checked": 0,
+      "partial": true,
+      "missing": true
+    },
+    {
+      "arm": "beam",
+      "sf": 1.0,
+      "transformation": "t5",
+      "run": 5,
+      "sha256": null,
+      "rows": null,
+      "rows_checked": 0,
+      "partial": true,
+      "missing": true
+    },
+    {
+      "arm": "beam",
+      "sf": 1.0,
+      "transformation": "t6",
+      "run": 5,
+      "sha256": null,
+      "rows": null,
+      "rows_checked": 0,
+      "partial": true,
+      "missing": true
     }
   ]
 }

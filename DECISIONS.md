@@ -82,3 +82,21 @@ protocol.
   also fails at T2, no second lever is pulled inside this study:
   the SF1 cells are then recorded as unable to complete and the
   verdicts follow the frozen INCONCLUSIVE paths.
+- D8 (2026-11-08): Completion record for the SF1 matrix and for the
+  study's finishing. The restarted SF1 matrix under
+  direct_num_workers=1 (D7) ran to its natural exit: all six passes
+  (the warm-up plus timed runs 1 to 5) were killed by signal 9
+  inside T2 after T1 completed, at peak process-tree RSS of
+  5,429,284 KB (warm-up), then 5,013,392, 4,497,064, 4,521,940,
+  4,507,924 and 4,547,304 KB (runs 1 to 5). No second restart was
+  attempted and no further runner option was pulled, exactly as D7
+  pre-committed. The five SF1 cells T2 to T6 are recorded as unable
+  to complete, and the verdicts follow the frozen paths in
+  PREREGISTRATION.md Section 2, computed by src/make_results.py.
+  Separately: the original build worker died on a runtime
+  infrastructure failure at about 12:21 EST on 2026-11-08, after
+  launching the restarted matrix as a detached process. The matrix
+  survived it. A completion pass shepherded the matrix to its exit,
+  collected the SF1 checksums, generated the results, and finished
+  README.md and AUDIT.md. No protocol element changed in the
+  completion pass.

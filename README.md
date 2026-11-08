@@ -1,0 +1,185 @@
+# Beam Pipeline Lab
+
+What does Apache Beam's portability cost, and what does it buy, on a
+fixed transformation workload? This study re-implements the six
+transformations of an already published Spark and DuckDB study (B2,
+JesunAhmadUshno/data-engineering-scale-lab, Track B2, closed
+2026-11-07) as Apache Beam pipelines in the Python SDK, runs them on
+the DirectRunner on the same machine that produced the B2 record,
+and scores them under rules frozen in PREREGISTRATION.md before any
+Beam run existed.
+
+All data is derived from TPC-H. Not official TPC-H data or results;
+no comparability to official TPC-H results is claimed. See
+LICENSES.md.
+
+## Headline verdicts
+
+All three verdicts are INCONCLUSIVE under the frozen rules, and the
+reason is a measured resource boundary, not a scoring choice:
+
+- H1 (portability tax at SF1): **INCONCLUSIVE**. Five of the six SF1
+  transformations could not complete on this machine, so no SF1 Beam
+  total exists.
+- H2 (exact reproduction): **INCONCLUSIVE**. Beam outputs match the
+  B2 run-1 SHA-256 checksum on 7 of the 12 (scale, transformation)
+  cells, with 0 mismatches and 5 cells unable to complete. Run 5
+  reproduces run 1 on all 7 matched cells, so determinism held
+  everywhere it could be tested.
+- H3 (the tax is uneven, SF1): **INCONCLUSIVE**. SF1 is incomplete,
+  so no SF1 per-transformation spread exists.
+
+What did complete, at SF0.1 (5 timed runs per transformation):
+
+| Scale | Beam total | B2 Spark local total | B2 DuckDB total | Beam / Spark |
+| --- | --- | --- | --- | --- |
+| SF0.1 | 169.92 s | 11.86 s | 1.48 s | 14.327 |
+| SF1 | no total | 100.59 s | 16.27 s | n/a |
+
+Per-transformation Beam-to-Spark ratios at SF0.1: T1 12.461,
+T2 18.353, T3 11.790, T4 9.115, T5 22.137, T6 5.831. The spread
+between the largest and smallest is 3.796. Under the pre-registration
+this is secondary evidence only, because H3 is scored at SF1.
+
+At SF1 only T1 ever completed. Its mean over the five timed runs is
+152.97 s, against the B2 Spark T1 mean of 4.27 s at SF1. Reported
+descriptively; the other five SF1 transformations have no times.
+
+Full generated tables: RESULTS.md and results/results.md. Nothing
+numeric in those files is hand-typed; src/make_results.py computes
+them from the run logs and checksum records.
+
+## The SF1 boundary
+
+T2 (lineitem joined to orders, 6,001,215 output rows at SF1) is
+where the DirectRunner's in-process execution runs out of machine.
+Nine SF1 passes died inside T2 across two runner configurations:
+
+- Default configuration (archived in
+  results/sf1_default_config_attempt.json, DECISIONS.md D7): the
+  warm-up and run 2 were killed by signal 9 and run 1 exited when
+  the local runner service died, at peak process-tree RSS between
+  5,369,508 KB and 5,398,492 KB.
+- Restarted under the one documented runner option the
+  pre-registration allows (direct_num_workers=1, DECISIONS.md D7
+  and D8): all six passes, the warm-up plus timed runs 1 to 5, were
+  killed by signal 9 inside T2, at peak process-tree RSS between
+  4,497,064 KB and 5,429,284 KB. T1 completed in every pass.
+
+No second restart was attempted; DECISIONS.md D7 pre-committed to
+exactly one lever, and the frozen INCONCLUSIVE paths followed. The
+boundary is a property of how the DirectRunner executes on a
+7.7 GiB shared VM, not of the pipelines: the same T2 pipeline
+completed at SF0.1 with its output matching the B2 checksum
+exactly.
+
+Setup overhead, reported separately as in B2: a fresh Beam process
+(import plus an empty pipeline run) medians 21.34 s over 5 samples,
+and the per-run runner-service start inside the matrix medians
+20.25 s at SF0.1 and 20.54 s at SF1 (DECISIONS.md D6). B2's
+analogues were 16.82 s for a Spark session and 0.49 s for a DuckDB
+connect.
+
+## Portability analysis (documentation analysis, not measurement)
+
+This section maps the constructs the six pipelines use to their
+portability status across runners. It is documentation analysis:
+only the DirectRunner was run in this study, so no portability claim
+below comes from measurement. Each claim carries its evidence, a
+Beam documentation statement or a code-level reason in
+src/pipelines.py.
+
+Constructs that run unchanged on portable runners (Dataflow, Flink,
+and Spark through the Beam runner):
+
+| Construct (where used) | Status | Evidence |
+| --- | --- | --- |
+| ReadFromParquet and WriteToParquet (all six pipelines) | Runs unchanged; only the file paths change to a filesystem the runner supports, for example GCS paths on Dataflow | Beam IO documentation: ParquetIO is a file-based IO connector in the Python SDK |
+| Map, FlatMap, Filter (all six) | Core model transforms, runner independent | Beam programming guide, element-wise transforms |
+| AsDict side inputs (the T2, T3 and T5 joins) | Model construct supported by all portable runners; the side input is materialized for lookup, so its memory cost lands on workers and its size is a scaling limit on any runner | Beam programming guide, side inputs |
+| CombinePerKey with a custom CombineFn (T3) | Core model; the combiner contract (create, add, merge, extract) is runner independent | Beam programming guide, CombineFn |
+| GroupByKey (T4, T6) | Core model, runs unchanged; requires keys with deterministic coders | Beam programming guide |
+| combiners.Top.Of with a key function (T6) | Core library combiner, runs unchanged | Beam transforms documentation |
+| Flatten (T6) | Core model, runs unchanged | Beam programming guide |
+| Exact decimal arithmetic in user code (T3, T4 money products) | The arithmetic lives in the pipeline's own Python functions and is executed by the worker on any runner that executes Python pipelines; results are identical by construction, and on this runner the checksum matrix is the evidence | src/pipelines.py; PREREGISTRATION.md Section 6 |
+
+One boundary matters for reading the SF1 result. The T2 failure at
+SF1 is a property of how the DirectRunner executes (the side input
+and every intermediate live in one process on one machine), not a
+property of the pipeline: the same pipeline completed at SF0.1 and
+its T1 stage completed and matched the reference checksum at SF1.
+On a distributed runner the same model is executed across workers.
+That is a statement about the model's design, not a performance
+promise for any other runner; none was measured.
+
+Python-SDK and DirectRunner specifics in this repository (not model
+properties):
+
+- Grouping keys are ISO date strings because the Python SDK has no
+  deterministic coder for datetime.date (DECISIONS.md D4). The
+  workaround lives in user code; SDKs with a standard date coder
+  would key on dates directly.
+- direct_num_workers=1 (DECISIONS.md D7) is a DirectRunner option.
+  It has no meaning on other runners, and it is named wherever SF1
+  configuration is reported.
+- The per-process runner-service start of about 20 s (DECISIONS.md
+  D6) is a property of the local runner in Beam 2.77. It is excluded
+  from every timed region and reported as setup overhead.
+- The Parquet IO calls use local filesystem paths. A Dataflow run
+  would point the same transforms at gs:// paths; no transform
+  changes.
+
+Deliberately avoided (PREREGISTRATION.md Section 9): Beam SQL, the
+Java and Go SDKs, streaming mode, windows and triggers beyond the
+global window, state and timers, and runner tuning beyond the one
+documented option in DECISIONS.md D7. Nothing in the six pipelines
+depends on DirectRunner-only behavior. That is the portability
+claim this study can honestly make: a code-level claim, supported by
+the construct audit above, labelled documentation analysis wherever
+it appears.
+
+## Why this matters
+
+Batch transformations sit underneath tax processing, hospital
+billing, benefits administration and bank reconciliation:
+unglamorous pipelines that move other people's money and records.
+Those systems outlive the engine they were first written on, so a
+portable pipeline model is insurance against lock-in, and insurance
+should be bought with its premium known. This study measures one
+premium honestly. On a small shared machine the portable model cost
+about 14.3 times the Spark runtime at the smaller scale, for output
+proven identical by checksum, and at the larger scale the reference
+runner could not finish the central join at all. A small team can
+use both halves of that result: the portability is real, and so is
+the resource floor underneath it.
+
+## Reproduce
+
+```bash
+python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+.venv/bin/python data/gen/generate.py        # regenerate inputs (DuckDB tpch)
+.venv/bin/python src/measure_setup.py        # setup overhead samples
+.venv/bin/python scripts/run_matrix.py --scales 0.1 1
+.venv/bin/python src/collect_checksums.py --sf 0.1
+.venv/bin/python src/collect_checksums.py --sf 1
+.venv/bin/python src/make_results.py         # writes RESULTS.md, results/results.md
+.venv/bin/python -m pytest tests/ -q         # semantic tests
+```
+
+On a 7.7 GiB machine the SF1 half of the matrix is expected to fail
+inside T2 in the manner recorded above; that failure is part of the
+reproduced result, and the drivers log it rather than hiding it.
+
+## Files
+
+- PREREGISTRATION.md: the frozen protocol and verdict rules.
+- DECISIONS.md: implementation decisions D1 to D8.
+- RESULTS.md and results/results.md: generated results.
+- results/: run logs, RSS logs, setup samples, checksum records,
+  the archived SF1 default-configuration attempt, versions, and the
+  Jev claim-check record (results/jev-claim-check.json).
+- AUDIT.md: the coordinator-grade self-audit of this study.
+- src/: pipelines, runner, checksum, results generator.
+- tests/: semantic tests for the six transformations.
+- LICENSE and LICENSES.md: Apache-2.0 for the code; the TPC-H
+  derivation notice for the data.

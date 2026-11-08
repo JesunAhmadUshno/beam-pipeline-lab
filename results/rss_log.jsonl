@@ -4,3 +4,9 @@
 {"sf": 0.1, "run": 3, "exit_code": 0, "wall_seconds": 197.6, "max_rss_kb": 3445444}
 {"sf": 0.1, "run": 4, "exit_code": 0, "wall_seconds": 188.83, "max_rss_kb": 3717868}
 {"sf": 0.1, "run": 5, "exit_code": 0, "wall_seconds": 186.07, "max_rss_kb": 3607668}
+{"sf": 1.0, "run": 0, "exit_code": -9, "wall_seconds": 423.47, "max_rss_kb": 5429284}
+{"sf": 1.0, "run": 1, "exit_code": -9, "wall_seconds": 351.4, "max_rss_kb": 5013392}
+{"sf": 1.0, "run": 2, "exit_code": -9, "wall_seconds": 276.49, "max_rss_kb": 4497064}
+{"sf": 1.0, "run": 3, "exit_code": -9, "wall_seconds": 273.19, "max_rss_kb": 4521940}
+{"sf": 1.0, "run": 4, "exit_code": -9, "wall_seconds": 339.19, "max_rss_kb": 4507924}
+{"sf": 1.0, "run": 5, "exit_code": -9, "wall_seconds": 270.54, "max_rss_kb": 4547304}

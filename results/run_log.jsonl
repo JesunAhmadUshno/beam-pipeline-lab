@@ -40,3 +40,15 @@
 {"arm": "beam", "sf": 0.1, "transformation": "t4", "run": 5, "seconds": 27.7203, "rows_out": 600572}
 {"arm": "beam", "sf": 0.1, "transformation": "t5", "run": 5, "seconds": 39.5419, "rows_out": 600572}
 {"arm": "beam", "sf": 0.1, "transformation": "t6", "run": 5, "seconds": 3.2569, "rows_out": 10}
+{"arm": "beam", "sf": 1.0, "transformation": "setup", "run": 0, "seconds": 20.333, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline", "runner_options": "direct_num_workers=1"}
+{"arm": "beam", "sf": 1.0, "transformation": "t1", "run": 0, "seconds": 99.2424, "rows_out": 914963}
+{"arm": "beam", "sf": 1.0, "transformation": "setup", "run": 1, "seconds": 20.7082, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline", "runner_options": "direct_num_workers=1"}
+{"arm": "beam", "sf": 1.0, "transformation": "t1", "run": 1, "seconds": 100.7285, "rows_out": 914963}
+{"arm": "beam", "sf": 1.0, "transformation": "setup", "run": 2, "seconds": 20.4344, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline", "runner_options": "direct_num_workers=1"}
+{"arm": "beam", "sf": 1.0, "transformation": "t1", "run": 2, "seconds": 164.0552, "rows_out": 914963}
+{"arm": "beam", "sf": 1.0, "transformation": "setup", "run": 3, "seconds": 20.4231, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline", "runner_options": "direct_num_workers=1"}
+{"arm": "beam", "sf": 1.0, "transformation": "t1", "run": 3, "seconds": 154.3823, "rows_out": 914963}
+{"arm": "beam", "sf": 1.0, "transformation": "setup", "run": 4, "seconds": 20.6104, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline", "runner_options": "direct_num_workers=1"}
+{"arm": "beam", "sf": 1.0, "transformation": "t1", "run": 4, "seconds": 177.1013, "rows_out": 914963}
+{"arm": "beam", "sf": 1.0, "transformation": "setup", "run": 5, "seconds": 20.5385, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline", "runner_options": "direct_num_workers=1"}
+{"arm": "beam", "sf": 1.0, "transformation": "t1", "run": 5, "seconds": 168.5845, "rows_out": 914963}
