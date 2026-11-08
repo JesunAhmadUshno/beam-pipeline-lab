@@ -1,0 +1,42 @@
+{"arm": "beam", "sf": 0.1, "transformation": "setup", "run": 0, "seconds": 20.3467, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline"}
+{"arm": "beam", "sf": 0.1, "transformation": "t1", "run": 0, "seconds": 11.3773, "rows_out": 91800}
+{"arm": "beam", "sf": 0.1, "transformation": "t2", "run": 0, "seconds": 61.969, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t3", "run": 0, "seconds": 22.0454, "rows_out": 2406}
+{"arm": "beam", "sf": 0.1, "transformation": "t4", "run": 0, "seconds": 27.983, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t5", "run": 0, "seconds": 46.2273, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t6", "run": 0, "seconds": 3.396, "rows_out": 10}
+{"arm": "beam", "sf": 0.1, "transformation": "setup", "run": 1, "seconds": 20.2463, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline"}
+{"arm": "beam", "sf": 0.1, "transformation": "t1", "run": 1, "seconds": 10.9143, "rows_out": 91800}
+{"arm": "beam", "sf": 0.1, "transformation": "t2", "run": 1, "seconds": 59.8147, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t3", "run": 1, "seconds": 22.1496, "rows_out": 2406}
+{"arm": "beam", "sf": 0.1, "transformation": "t4", "run": 1, "seconds": 29.9184, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t5", "run": 1, "seconds": 55.5306, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t6", "run": 1, "seconds": 3.2475, "rows_out": 10}
+{"arm": "beam", "sf": 0.1, "transformation": "setup", "run": 2, "seconds": 20.2379, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline"}
+{"arm": "beam", "sf": 0.1, "transformation": "t1", "run": 2, "seconds": 15.0287, "rows_out": 91800}
+{"arm": "beam", "sf": 0.1, "transformation": "t2", "run": 2, "seconds": 61.6506, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t3", "run": 2, "seconds": 24.1225, "rows_out": 2406}
+{"arm": "beam", "sf": 0.1, "transformation": "t4", "run": 2, "seconds": 27.6987, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t5", "run": 2, "seconds": 39.7541, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t6", "run": 2, "seconds": 3.1211, "rows_out": 10}
+{"arm": "beam", "sf": 0.1, "transformation": "setup", "run": 3, "seconds": 20.2562, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline"}
+{"arm": "beam", "sf": 0.1, "transformation": "t1", "run": 3, "seconds": 11.1238, "rows_out": 91800}
+{"arm": "beam", "sf": 0.1, "transformation": "t2", "run": 3, "seconds": 57.839, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t3", "run": 3, "seconds": 23.7919, "rows_out": 2406}
+{"arm": "beam", "sf": 0.1, "transformation": "t4", "run": 3, "seconds": 34.4366, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t5", "run": 3, "seconds": 41.6637, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t6", "run": 3, "seconds": 3.6002, "rows_out": 10}
+{"arm": "beam", "sf": 0.1, "transformation": "setup", "run": 4, "seconds": 20.2931, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline"}
+{"arm": "beam", "sf": 0.1, "transformation": "t1", "run": 4, "seconds": 10.9646, "rows_out": 91800}
+{"arm": "beam", "sf": 0.1, "transformation": "t2", "run": 4, "seconds": 56.3223, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t3", "run": 4, "seconds": 21.2905, "rows_out": 2406}
+{"arm": "beam", "sf": 0.1, "transformation": "t4", "run": 4, "seconds": 27.8961, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t5", "run": 4, "seconds": 43.7706, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t6", "run": 4, "seconds": 3.3933, "rows_out": 10}
+{"arm": "beam", "sf": 0.1, "transformation": "setup", "run": 5, "seconds": 20.2513, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline"}
+{"arm": "beam", "sf": 0.1, "transformation": "t1", "run": 5, "seconds": 11.1599, "rows_out": 91800}
+{"arm": "beam", "sf": 0.1, "transformation": "t2", "run": 5, "seconds": 55.2711, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t3", "run": 5, "seconds": 23.5969, "rows_out": 2406}
+{"arm": "beam", "sf": 0.1, "transformation": "t4", "run": 5, "seconds": 27.7203, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t5", "run": 5, "seconds": 39.5419, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t6", "run": 5, "seconds": 3.2569, "rows_out": 10}

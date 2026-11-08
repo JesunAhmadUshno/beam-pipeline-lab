@@ -29,6 +29,16 @@ from spec import ORDER  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 
+# Runner options for every pipeline in this pass. The default is the
+# bare DirectRunner. DECISIONS.md D7 records the one registered use
+# of PREREGISTRATION.md Section 9: at SF1 the default configuration
+# failed at T2 in three consecutive attempts by resource exhaustion,
+# and the SF1 matrix was restarted with the documented DirectRunner
+# option --direct_num_workers=1, needed to execute at all on this
+# machine. The setup record of every pass names the configuration.
+RUNNER_FLAGS = ["--runner=DirectRunner"]
+RUNNER_LABEL = "default"
+
 
 def sf_label(sf):
     return "%g" % sf
@@ -42,7 +52,7 @@ def log_run(record):
 
 
 def run_transformation(key, inputs, out_prefix):
-    pipeline = beam.Pipeline(options=PipelineOptions(["--runner=DirectRunner"]))
+    pipeline = beam.Pipeline(options=PipelineOptions(RUNNER_FLAGS))
     BUILDERS[key](pipeline, *inputs, out_prefix)
     started = time.perf_counter()
     result = pipeline.run()
@@ -56,7 +66,7 @@ def run_setup_preroll():
     protocol did the same thing in the other direction: its setup
     figure includes a first action, and its timed runs executed in the
     warm session. Returns the seconds the empty run took."""
-    pipeline = beam.Pipeline(options=PipelineOptions(["--runner=DirectRunner"]))
+    pipeline = beam.Pipeline(options=PipelineOptions(RUNNER_FLAGS))
     _ = pipeline | beam.Create([]) | beam.Map(lambda x: x)
     started = time.perf_counter()
     result = pipeline.run()
@@ -70,7 +80,15 @@ def main():
     ap.add_argument("--run", type=int, required=True)
     ap.add_argument("--data-root", default="data")
     ap.add_argument("--out-root", default="outputs")
+    ap.add_argument("--direct-num-workers", type=int, default=None,
+                    help="documented DirectRunner option; set only under "
+                         "DECISIONS.md D7 (SF1 restart)")
     args = ap.parse_args()
+
+    if args.direct_num_workers is not None:
+        global RUNNER_LABEL
+        RUNNER_FLAGS.append(f"--direct_num_workers={args.direct_num_workers}")
+        RUNNER_LABEL = f"direct_num_workers={args.direct_num_workers}"
 
     label = sf_label(args.sf)
     base = ROOT / args.data_root / f"sf{label}"
@@ -94,6 +112,7 @@ def main():
         "arm": "beam", "sf": args.sf, "transformation": "setup",
         "run": args.run, "seconds": round(setup_seconds, 4), "rows_out": None,
         "beam_setup": "runner_service_start_empty_pipeline",
+        "runner_options": RUNNER_LABEL,
     })
     print(f"sf{label} run{args.run} setup: {setup_seconds:.3f}s", flush=True)
 

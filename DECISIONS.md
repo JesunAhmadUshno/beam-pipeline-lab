@@ -53,3 +53,32 @@ protocol.
   TypeError from the runner, reproduced during harness testing).
   Internal representation only; keys, values, and outputs are
   unchanged.
+- D7 (2026-11-08): SF1 under the default DirectRunner configuration
+  failed inside T2 in three consecutive passes, and the SF1 matrix
+  was restarted under a documented runner option, as
+  PREREGISTRATION.md Section 9 allows (documented runner options
+  needed to execute at all, recorded here before the restarted runs
+  and named in RESULTS.md). Evidence: the warm-up pass was killed by
+  signal 9 inside T2 at a peak process-tree RSS of 5,391,040 KB;
+  timed run 1 exited 1 inside T2 when the local runner service died
+  (gRPC stream removed, ping timeout; the service was destroyed) at
+  a peak of 5,369,508 KB; timed run 2 was killed by signal 9 inside
+  T2 at a peak of 5,398,492 KB; run 3 was stopped by hand once the
+  pattern was proven. T1 completed in every pass (99.5 to 120.8 s,
+  914,963 rows). Live sampling during run 2 showed the single SDK
+  worker process growing from 0.73 GiB to 2.89 GiB in 40 s inside T2
+  while the runner service held about 1.1 GiB: T2's side-input join
+  over 1.5M orders rows, run at the runner's default bundle
+  parallelism, needs more memory than this 7.7 GiB shared machine
+  can give. The failed attempt's records are preserved in
+  results/sf1_default_config_attempt.json; no number from it enters
+  any mean, total, or verdict. The restart changes exactly one
+  thing: --direct_num_workers=1, a DirectRunner option defined in
+  apache_beam.options.pipeline_options, applied to every restarted
+  SF1 pass including its warm-up and named in each pass's setup
+  record as runner_options. SF0.1 is untouched: it completed under
+  the default configuration, and the configuration of each scale is
+  named wherever its times are reported. If the restarted matrix
+  also fails at T2, no second lever is pulled inside this study:
+  the SF1 cells are then recorded as unable to complete and the
+  verdicts follow the frozen INCONCLUSIVE paths.

@@ -1,0 +1,89 @@
+{
+ "note": "SF1 attempt under the DirectRunner default configuration, 2026-11-08. Every pass died inside T2 by resource exhaustion (see DECISIONS.md D7). These records are the evidence for the failure and for the Section 9 restart; no number here enters any mean, total, or verdict. The timed SF1 matrix in run_log.jsonl is the restarted one, run under direct_num_workers=1.",
+ "config": "apache-beam 2.77.0, DirectRunner (Prism), default options",
+ "run_records": [
+  {
+   "arm": "beam",
+   "sf": 1.0,
+   "transformation": "setup",
+   "run": 0,
+   "seconds": 20.2776,
+   "rows_out": null,
+   "beam_setup": "runner_service_start_empty_pipeline"
+  },
+  {
+   "arm": "beam",
+   "sf": 1.0,
+   "transformation": "t1",
+   "run": 0,
+   "seconds": 104.1986,
+   "rows_out": 914963
+  },
+  {
+   "arm": "beam",
+   "sf": 1.0,
+   "transformation": "setup",
+   "run": 1,
+   "seconds": 20.3137,
+   "rows_out": null,
+   "beam_setup": "runner_service_start_empty_pipeline"
+  },
+  {
+   "arm": "beam",
+   "sf": 1.0,
+   "transformation": "t1",
+   "run": 1,
+   "seconds": 99.5377,
+   "rows_out": 914963
+  },
+  {
+   "arm": "beam",
+   "sf": 1.0,
+   "transformation": "setup",
+   "run": 2,
+   "seconds": 20.7311,
+   "rows_out": null,
+   "beam_setup": "runner_service_start_empty_pipeline"
+  },
+  {
+   "arm": "beam",
+   "sf": 1.0,
+   "transformation": "t1",
+   "run": 2,
+   "seconds": 120.8066,
+   "rows_out": 914963
+  },
+  {
+   "arm": "beam",
+   "sf": 1.0,
+   "transformation": "setup",
+   "run": 3,
+   "seconds": 20.2639,
+   "rows_out": null,
+   "beam_setup": "runner_service_start_empty_pipeline"
+  }
+ ],
+ "rss_records": [
+  {
+   "sf": 1.0,
+   "run": 0,
+   "exit_code": -9,
+   "wall_seconds": 702.97,
+   "max_rss_kb": 5391040
+  },
+  {
+   "sf": 1.0,
+   "run": 1,
+   "exit_code": 1,
+   "wall_seconds": 339.03,
+   "max_rss_kb": 5369508
+  },
+  {
+   "sf": 1.0,
+   "run": 2,
+   "exit_code": -9,
+   "wall_seconds": 215.02,
+   "max_rss_kb": 5398492
+  }
+ ]
+}

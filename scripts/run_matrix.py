@@ -80,6 +80,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--scales", type=float, nargs="+", default=[0.1, 1.0])
     ap.add_argument("--runs", type=int, default=5)
+    ap.add_argument("--direct-num-workers", type=int, default=None,
+                    help="passed through to run_beam.py; used only for "
+                         "the SF1 restart under DECISIONS.md D7")
     args = ap.parse_args()
 
     rss_log = ROOT / "results" / "rss_log.jsonl"
@@ -92,6 +95,8 @@ def main():
                 str(ROOT / "src" / "run_beam.py"),
                 "--sf", "%g" % sf, "--run", str(run),
             ]
+            if args.direct_num_workers is not None:
+                cmd += ["--direct-num-workers", str(args.direct_num_workers)]
             started = time.time()
             exit_code, stdout, stderr, peak_kb = run_sampled(cmd)
             wall = time.time() - started

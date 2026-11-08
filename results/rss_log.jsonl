@@ -1,0 +1,6 @@
+{"sf": 0.1, "run": 0, "exit_code": 0, "wall_seconds": 199.54, "max_rss_kb": 3559320}
+{"sf": 0.1, "run": 1, "exit_code": 0, "wall_seconds": 207.1, "max_rss_kb": 3717612}
+{"sf": 0.1, "run": 2, "exit_code": 0, "wall_seconds": 196.74, "max_rss_kb": 3787728}
+{"sf": 0.1, "run": 3, "exit_code": 0, "wall_seconds": 197.6, "max_rss_kb": 3445444}
+{"sf": 0.1, "run": 4, "exit_code": 0, "wall_seconds": 188.83, "max_rss_kb": 3717868}
+{"sf": 0.1, "run": 5, "exit_code": 0, "wall_seconds": 186.07, "max_rss_kb": 3607668}
