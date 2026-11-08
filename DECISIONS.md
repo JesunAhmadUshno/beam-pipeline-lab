@@ -24,6 +24,12 @@ protocol.
   same names as B2's arm outputs (t1.parquet, and so on). The
   canonical checksum reads the same logical rows regardless of file
   layout.
+- D5 (2026-11-08): Peak memory is sampled from the run's process
+  tree (sum of VmRSS over descendants, 0.25 s sampling) by
+  scripts/run_matrix.py, because GNU time is not installed on the
+  machine of record and the runner spawns worker processes. RSS is
+  secondary evidence with no hypothesis attached (PREREGISTRATION.md
+  Section 7); only the sampling method changed, not what is claimed.
 - D4 (2026-11-08): Grouping keys in T3, T4, and T6 are ISO date
   strings, converted back to dates when output rows are shaped. Beam
   requires deterministic key coders for GroupByKey and CombinePerKey,

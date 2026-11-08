@@ -1,0 +1,6 @@
+{"arm": "beam", "sf": 0.1, "transformation": "t1", "run": 1, "seconds": 30.8661, "rows_out": 91800}
+{"arm": "beam", "sf": 0.1, "transformation": "t2", "run": 1, "seconds": 63.9911, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t3", "run": 1, "seconds": 22.4042, "rows_out": 2406}
+{"arm": "beam", "sf": 0.1, "transformation": "t4", "run": 1, "seconds": 27.6397, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t5", "run": 1, "seconds": 40.3921, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t6", "run": 1, "seconds": 3.1282, "rows_out": 10}
