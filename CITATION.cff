@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "beam-pipeline-lab: the cost and the payoff of Apache Beam's portability on a fixed transformation workload, a pre-registered study against a published Spark and DuckDB record"
+authors:
+  - family-names: Ushno
+    given-names: Jesun Ahmad
+repository-code: "https://github.com/JesunAhmadUshno/beam-pipeline-lab"
+license: Apache-2.0
+date-released: 2026-11-08
