@@ -1,9 +1,11 @@
 # Audit
 
 Self-audit of the Beam Pipeline Lab study, written at completion
-(2026-11-08) in the programme's house form: a grade out of 10,000,
-floored, with deductions itemized, and the verification work stated
-separately from the claims it checks.
+(2026-11-08). This file is the study's report in the portfolio
+standard: what was verified and how, how the evidence is protected,
+the threats to validity, and the residuals. The verification work is
+stated separately from the claims it checks. Scoring is internal and
+is not published here.
 
 ## What was verified, and how
 
@@ -47,48 +49,80 @@ response: ~/workspace/tools/jev/beam-pipeline-lab-claim-spec-2026-11-08.json
 and beam-pipeline-lab-claim-results-2026-11-08.json (usage: 1,434
 input tokens, 20 output tokens).
 
-## Grade
+## How the evidence is protected
 
-Grade: 5,750 of 10,000.
+- The lock is enforced in code. PREREGISTRATION.md was committed
+  alone in 0b74d2f, before any harness file or run, and has never
+  changed since. tests/test_layout.py pins its SHA-256 as committed
+  there, so one changed byte fails CI.
+- Verdicts are computed, not typed. src/make_results.py reads
+  results/run_log.jsonl, results/rss_log.jsonl,
+  results/setup_log.jsonl, results/checksums.json and
+  results/reference_checksums.json, and writes RESULTS.md and
+  results/results.md. CI reruns it and fails if either file changes,
+  so the published tables always match the recorded evidence.
+- The README headline is checked against the raw run log:
+  tests/test_layout.py recomputes the SF0.1 total, its per-run range
+  and the ratio to the B2 Spark total from results/run_log.jsonl.
+- Failed passes are kept, not dropped. The SF1 default-configuration
+  attempt is archived in results/sf1_default_config_attempt.json and
+  every restarted SF1 pass is in results/rss_log.jsonl with its exit
+  code and peak memory.
+- The comparison record is read only. B2's reference checksums are
+  copied with provenance into results/reference_checksums.json, and
+  at finishing every Beam checksum was re-verified against the B2
+  repository's own file (section above).
 
-What the grade credits: a pre-registration that was actually kept,
-including its own failure handling (DECISIONS.md D7 pulled exactly
-the one runner lever Section 9 allows, and D8 records that no second
-lever was pulled when the restarted matrix failed the same way); a
-complete SF0.1 matrix with exact, independently re-verified
-reproduction on all six cells plus determinism; an SF1 failure
-characterized with memory evidence across two configurations and
-nine passes, instead of a quiet scope cut; and verdicts computed by
-script from the logs, with the misses printed next to the hits.
+## Threats to validity
 
-Deductions, itemized:
+What the study got right is on record above and in DECISIONS.md: the
+pre-registration was kept, including its own failure handling (D7
+pulled exactly the one runner lever Section 9 allows, and D8 records
+that no second lever was pulled when the restarted matrix failed the
+same way); the SF0.1 matrix is complete, with exact, independently
+re-verified reproduction on all six cells plus determinism; the SF1
+failure is characterized with memory evidence across two
+configurations and nine passes, instead of a quiet scope cut; and
+verdicts are computed by script from the logs, with the misses
+printed next to the hits. The threats below bound what that record
+can say.
 
-- Minus 2,400: the SF1 matrix is incomplete, so H1 and H3 are
-  INCONCLUSIVE at the primary scale the hypotheses were written
-  for. The portability tax is measured only at SF0.1.
-- Minus 800: H2 is INCONCLUSIVE. Exact reproduction is proven on 7
-  of 12 cells; the five SF1 cells T2 to T6 have no Beam output at
-  all, so byte-exact agreement there is unproven, not contradicted.
-- Minus 300: every timing was taken on a shared VM with co-tenants
-  that were never stopped; SF1 T1's timed runs drifted from
-  100.73 s to 177.10 s across the matrix, which shows the noise
+- Incomplete primary scale. The SF1 matrix is incomplete, so H1 and
+  H3 are INCONCLUSIVE at the primary scale the hypotheses were
+  written for. The portability tax is measured only at SF0.1.
+- Partial reproduction. H2 is INCONCLUSIVE. Exact reproduction is
+  proven on 7 of 12 cells; the five SF1 cells T2 to T6 have no Beam
+  output at all, so byte-exact agreement there is unproven, not
+  contradicted.
+- Correctness gates runs 1 and 5 only. The protocol checksums Beam
+  runs 1 and 5 on every cell (PREREGISTRATION.md Section 7); timed
+  runs 2 to 4 are counted without their own checksum. Runs 1 and 5
+  agree everywhere they were tested, which makes a silent divergence
+  in between unlikely, but it is not excluded.
+- Co-tenancy, stated but not measured. Every timing was taken on a
+  shared VM with co-tenants that were never stopped, and no load
+  reading was recorded with each run. SF1 T1's timed runs drifted
+  from 100.73 s to 177.10 s across the matrix, which shows the noise
   plainly. The B2 record carried the same caveat.
-- Minus 300: one runner, one SDK, one machine, one workload. The
+- Borrowed baseline. The Spark and DuckDB baselines are B2's
+  published means from the same machine on 2026-11-07, not re-run
+  alongside Beam, so machine load on the two days may differ.
+- Narrow scope. One runner, one SDK, one machine, one workload. The
   scope was registered in advance (PREREGISTRATION.md Section 9),
   and it still bounds what the study can say.
-- Minus 200: execution continuity. The original build worker died
-  on a runtime infrastructure failure at about 12:21 EST on
-  2026-11-08; the study's finish depended on the detached matrix
-  process surviving it and on a completion pass doing the finishing
-  work (DECISIONS.md D8).
-- Minus 150: the setup pre-roll (DECISIONS.md D6) departs from
+- Execution continuity. The original build worker died on a runtime
+  infrastructure failure at about 12:21 EST on 2026-11-08; the
+  study's finish depended on the detached matrix process surviving
+  it and on a completion pass doing the finishing work
+  (DECISIONS.md D8).
+- Protocol shape. The setup pre-roll (DECISIONS.md D6) departs from
   B2's warm-session protocol shape. It is registered, justified by
   the runner's service-start cost, and does not touch any timed
   region, but it is a comparability wrinkle a reader must hold.
-- Minus 100: peak memory is process-tree RSS sampling (DECISIONS.md
-  D5), not an external meter, because GNU time is not installed on
-  the machine of record. RSS carries no hypothesis; the deduction
-  is for the instrument, not the claim.
+- Memory instrument. Peak memory is process-tree RSS sampling
+  (DECISIONS.md D5), not an external meter, because GNU time is not
+  installed on the machine of record. RSS carries no hypothesis; the
+  limit is the instrument, not the claim.
 
 ## Residuals
 
