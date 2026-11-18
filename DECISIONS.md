@@ -100,3 +100,92 @@ protocol.
   collected the SF1 checksums, generated the results, and finished
   README.md and AUDIT.md. No protocol element changed in the
   completion pass.
+- D9 (2026-11-18): Gap-closure completion attempt of the SF1 matrix
+  on a machine with memory headroom. Registered before any run, under
+  the gap-closure orders of 2026-11-17 and 2026-11-18. Background: D8
+  recorded all six SF1 passes (warm-up plus five timed runs) killed by
+  signal 9 inside T2 on the 7.7 GiB machine of record, at peak
+  process-tree RSS of 4,497,064 to 5,429,284 KB, and the verdicts
+  followed the frozen INCONCLUSIVE paths. D7 pre-committed that no
+  second runner lever would be pulled inside this study; this
+  amendment pulls none: the matrix runs in the D7 restart
+  configuration exactly (direct_num_workers=1 on every pass including
+  the warm-up, named in each pass setup record). What changes is only
+  the machine: the Dell PowerEdge R610 (16 cores, 94 GiB RAM, about
+  77 GiB available at registration), against a recorded peak of about
+  5.4 GiB. Machine history: the completion was staged on BlackBoxV2
+  under this number (route lost before it ran), re-registered on
+  BlackBoxV3 (RAM gate failed there on measurement: 4,421 MB
+  available), and is executed on the R610. Execution is in a
+  path-shifted copy of this repository (beam-pipeline-lab-d9 beside
+  the clone); harness and verdict logic are byte-identical to this
+  clone. The copy run_log.jsonl and rss_log.jsonl are the run
+  records; copies land in this clone as new files
+  (results/d9_sf1_run_log.jsonl, results/d9_sf1_rss_log.jsonl) with
+  the outcome entry. If the matrix completes, verdicts are computed
+  by the repo own src/make_results.py inside the copy, logic
+  unchanged, and any movement is reported beside the committed
+  INCONCLUSIVE verdicts; this clone RESULTS.md is not edited.
+- D9 addendum (2026-11-18, registered before the run it covers): a
+  second execution repair in the same class as the first. The first
+  D9 attempt on the R610 failed all passes inside T1 at about 306 s
+  per pass at about 1.4 GiB peak RSS, not by memory: Beam 2.77 runs
+  these pipelines on the Prism portable runner, whose job-server
+  request timeout (--job_server_timeout) defaults to 300 s, and the
+  driver state stream dies with DEADLINE_EXCEEDED once a single
+  transformation runs past it. On the machine of record every
+  transformation finished inside 300 s, so the limit never fired;
+  on the R610 Xeon E5540, T1 alone needs longer. The option own
+  documentation states it does not apply to pipeline run time and
+  the driver can wait for completion indefinitely. The repair uses
+  the study own mechanism (the RUNNER_FLAGS list in run_beam.py,
+  the D7 pattern): the run copy adds --job_server_timeout=3600 to
+  every pipeline and its setup records name it
+  (runner_options: direct_num_workers=1, job_server_timeout=3600).
+  D7 pre-commitment against a second lever governed the original
+  study on the machine of record and was executed in D8; this
+  amendment is a new gap-closure execution on a different machine,
+  and the change is a harness wait limit, not a measurement
+  parameter: pipeline graphs, data, timed regions, and verdict
+  logic are unchanged. The first D9 attempt records (three setup
+  lines, two rss lines, no transformation completed) were reset in
+  the copy before this relaunch and are described here so the
+  attempt is not lost.
+- D9 outcome (2026-11-18): the SF1 matrix COMPLETED on the R610.
+  All six passes (warm-up plus timed runs 1 to 5) exited 0 in the D7
+  configuration with the addendum harness timeout named in every
+  setup record (direct_num_workers=1, job_server_timeout=3600).
+  Pass walls 4,223.7 to 4,270.1 s; peak process-tree RSS 26.8 to
+  28.8 GiB per pass, against the 4.5 to 5.4 GiB at which the machine
+  of record killed every pass: the true SF1 memory need is about
+  27 GiB, five times the kill point. The SF1 dataset of record was
+  transferred from the machine of record working tree and verified
+  byte-identical by md5 before the run (data is generated, not
+  committed). Verdicts were computed by the repo own
+  src/make_results.py from the executed log and the checksums of
+  the R610 run 1 and run 5 outputs (the checksum step ran on the
+  study VM because the pinned duckdb wheel crashes with an illegal
+  instruction on the R610 Xeon E5540, which has no AVX; the timed
+  pipelines never import duckdb). All three verdicts move from
+  INCONCLUSIVE to CONFIRMED under the frozen rules: H1 CONFIRMED
+  (Beam SF1 total 4,153.73 s vs B2 Spark local 100.59 s, ratio
+  41.294 against the frozen 2.0 line); H2 CONFIRMED (12 of 12 cells
+  match the B2 run-1 checksum, 0 mismatches; run 5 reproduces run 1
+  on all 12 cells, 0 determinism breaks); H3 CONFIRMED (largest
+  per-transformation ratio 94.20 at T5, smallest 27.81 at T2,
+  spread 3.39 against the frozen 2.0 line). Composition note, for
+  honesty: the T1 mean inside the 4,153.73 total pools the five
+  timed T1 records from the D8 passes on the machine of record
+  (100.7 to 177.1 s) with the five R610 records (314.8 to 323.7 s),
+  because the repo run log and verdict logic do not separate them;
+  T2 to T6 means are R610 only, as no other SF1 records exist. On
+  R610-only timed means the total is 4,236.66 s and the H1 ratio
+  42.12: the verdicts are the same. R610 timed means: T1 318.88,
+  T2 1,255.94, T3 508.38, T4 1,018.62, T5 1,053.14, T6 81.70 s.
+  The generated results files are preserved beside this entry as
+  results/d9_RESULTS.md and results/d9_results_tables.md, the
+  executed logs as results/d9_sf1_run_log.jsonl and
+  results/d9_sf1_rss_log.jsonl, and the merged checksum record as
+  results/d9_checksums.json. This clone RESULTS.md is unchanged;
+  the paper three INCONCLUSIVE verdicts are superseded by this
+  outcome wherever the study is next reported.

@@ -1,0 +1,96 @@
+{"arm": "beam", "sf": 0.1, "transformation": "setup", "run": 0, "seconds": 20.3467, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline"}
+{"arm": "beam", "sf": 0.1, "transformation": "t1", "run": 0, "seconds": 11.3773, "rows_out": 91800}
+{"arm": "beam", "sf": 0.1, "transformation": "t2", "run": 0, "seconds": 61.969, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t3", "run": 0, "seconds": 22.0454, "rows_out": 2406}
+{"arm": "beam", "sf": 0.1, "transformation": "t4", "run": 0, "seconds": 27.983, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t5", "run": 0, "seconds": 46.2273, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t6", "run": 0, "seconds": 3.396, "rows_out": 10}
+{"arm": "beam", "sf": 0.1, "transformation": "setup", "run": 1, "seconds": 20.2463, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline"}
+{"arm": "beam", "sf": 0.1, "transformation": "t1", "run": 1, "seconds": 10.9143, "rows_out": 91800}
+{"arm": "beam", "sf": 0.1, "transformation": "t2", "run": 1, "seconds": 59.8147, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t3", "run": 1, "seconds": 22.1496, "rows_out": 2406}
+{"arm": "beam", "sf": 0.1, "transformation": "t4", "run": 1, "seconds": 29.9184, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t5", "run": 1, "seconds": 55.5306, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t6", "run": 1, "seconds": 3.2475, "rows_out": 10}
+{"arm": "beam", "sf": 0.1, "transformation": "setup", "run": 2, "seconds": 20.2379, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline"}
+{"arm": "beam", "sf": 0.1, "transformation": "t1", "run": 2, "seconds": 15.0287, "rows_out": 91800}
+{"arm": "beam", "sf": 0.1, "transformation": "t2", "run": 2, "seconds": 61.6506, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t3", "run": 2, "seconds": 24.1225, "rows_out": 2406}
+{"arm": "beam", "sf": 0.1, "transformation": "t4", "run": 2, "seconds": 27.6987, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t5", "run": 2, "seconds": 39.7541, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t6", "run": 2, "seconds": 3.1211, "rows_out": 10}
+{"arm": "beam", "sf": 0.1, "transformation": "setup", "run": 3, "seconds": 20.2562, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline"}
+{"arm": "beam", "sf": 0.1, "transformation": "t1", "run": 3, "seconds": 11.1238, "rows_out": 91800}
+{"arm": "beam", "sf": 0.1, "transformation": "t2", "run": 3, "seconds": 57.839, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t3", "run": 3, "seconds": 23.7919, "rows_out": 2406}
+{"arm": "beam", "sf": 0.1, "transformation": "t4", "run": 3, "seconds": 34.4366, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t5", "run": 3, "seconds": 41.6637, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t6", "run": 3, "seconds": 3.6002, "rows_out": 10}
+{"arm": "beam", "sf": 0.1, "transformation": "setup", "run": 4, "seconds": 20.2931, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline"}
+{"arm": "beam", "sf": 0.1, "transformation": "t1", "run": 4, "seconds": 10.9646, "rows_out": 91800}
+{"arm": "beam", "sf": 0.1, "transformation": "t2", "run": 4, "seconds": 56.3223, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t3", "run": 4, "seconds": 21.2905, "rows_out": 2406}
+{"arm": "beam", "sf": 0.1, "transformation": "t4", "run": 4, "seconds": 27.8961, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t5", "run": 4, "seconds": 43.7706, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t6", "run": 4, "seconds": 3.3933, "rows_out": 10}
+{"arm": "beam", "sf": 0.1, "transformation": "setup", "run": 5, "seconds": 20.2513, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline"}
+{"arm": "beam", "sf": 0.1, "transformation": "t1", "run": 5, "seconds": 11.1599, "rows_out": 91800}
+{"arm": "beam", "sf": 0.1, "transformation": "t2", "run": 5, "seconds": 55.2711, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t3", "run": 5, "seconds": 23.5969, "rows_out": 2406}
+{"arm": "beam", "sf": 0.1, "transformation": "t4", "run": 5, "seconds": 27.7203, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t5", "run": 5, "seconds": 39.5419, "rows_out": 600572}
+{"arm": "beam", "sf": 0.1, "transformation": "t6", "run": 5, "seconds": 3.2569, "rows_out": 10}
+{"arm": "beam", "sf": 1.0, "transformation": "setup", "run": 0, "seconds": 20.333, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline", "runner_options": "direct_num_workers=1"}
+{"arm": "beam", "sf": 1.0, "transformation": "t1", "run": 0, "seconds": 99.2424, "rows_out": 914963}
+{"arm": "beam", "sf": 1.0, "transformation": "setup", "run": 1, "seconds": 20.7082, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline", "runner_options": "direct_num_workers=1"}
+{"arm": "beam", "sf": 1.0, "transformation": "t1", "run": 1, "seconds": 100.7285, "rows_out": 914963}
+{"arm": "beam", "sf": 1.0, "transformation": "setup", "run": 2, "seconds": 20.4344, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline", "runner_options": "direct_num_workers=1"}
+{"arm": "beam", "sf": 1.0, "transformation": "t1", "run": 2, "seconds": 164.0552, "rows_out": 914963}
+{"arm": "beam", "sf": 1.0, "transformation": "setup", "run": 3, "seconds": 20.4231, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline", "runner_options": "direct_num_workers=1"}
+{"arm": "beam", "sf": 1.0, "transformation": "t1", "run": 3, "seconds": 154.3823, "rows_out": 914963}
+{"arm": "beam", "sf": 1.0, "transformation": "setup", "run": 4, "seconds": 20.6104, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline", "runner_options": "direct_num_workers=1"}
+{"arm": "beam", "sf": 1.0, "transformation": "t1", "run": 4, "seconds": 177.1013, "rows_out": 914963}
+{"arm": "beam", "sf": 1.0, "transformation": "setup", "run": 5, "seconds": 20.5385, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline", "runner_options": "direct_num_workers=1"}
+{"arm": "beam", "sf": 1.0, "transformation": "t1", "run": 5, "seconds": 168.5845, "rows_out": 914963}
+{"arm": "beam", "sf": 1.0, "transformation": "setup", "run": 0, "seconds": 1.3657, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline", "runner_options": "direct_num_workers=1, job_server_timeout=3600"}
+{"arm": "beam", "sf": 1.0, "transformation": "t1", "run": 0, "seconds": 322.9164, "rows_out": 914963}
+{"arm": "beam", "sf": 1.0, "transformation": "t2", "run": 0, "seconds": 1264.3552, "rows_out": 6001215}
+{"arm": "beam", "sf": 1.0, "transformation": "t3", "run": 0, "seconds": 511.3439, "rows_out": 2406}
+{"arm": "beam", "sf": 1.0, "transformation": "t4", "run": 0, "seconds": 1011.7993, "rows_out": 6001215}
+{"arm": "beam", "sf": 1.0, "transformation": "t5", "run": 0, "seconds": 1044.9536, "rows_out": 6001215}
+{"arm": "beam", "sf": 1.0, "transformation": "t6", "run": 0, "seconds": 81.7124, "rows_out": 10}
+{"arm": "beam", "sf": 1.0, "transformation": "setup", "run": 1, "seconds": 1.1907, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline", "runner_options": "direct_num_workers=1, job_server_timeout=3600"}
+{"arm": "beam", "sf": 1.0, "transformation": "t1", "run": 1, "seconds": 323.6724, "rows_out": 914963}
+{"arm": "beam", "sf": 1.0, "transformation": "t2", "run": 1, "seconds": 1244.3026, "rows_out": 6001215}
+{"arm": "beam", "sf": 1.0, "transformation": "t3", "run": 1, "seconds": 503.9723, "rows_out": 2406}
+{"arm": "beam", "sf": 1.0, "transformation": "t4", "run": 1, "seconds": 1014.3507, "rows_out": 6001215}
+{"arm": "beam", "sf": 1.0, "transformation": "t5", "run": 1, "seconds": 1047.2757, "rows_out": 6001215}
+{"arm": "beam", "sf": 1.0, "transformation": "t6", "run": 1, "seconds": 82.4995, "rows_out": 10}
+{"arm": "beam", "sf": 1.0, "transformation": "setup", "run": 2, "seconds": 1.3147, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline", "runner_options": "direct_num_workers=1, job_server_timeout=3600"}
+{"arm": "beam", "sf": 1.0, "transformation": "t1", "run": 2, "seconds": 319.0134, "rows_out": 914963}
+{"arm": "beam", "sf": 1.0, "transformation": "t2", "run": 2, "seconds": 1250.8416, "rows_out": 6001215}
+{"arm": "beam", "sf": 1.0, "transformation": "t3", "run": 2, "seconds": 510.081, "rows_out": 2406}
+{"arm": "beam", "sf": 1.0, "transformation": "t4", "run": 2, "seconds": 1012.9721, "rows_out": 6001215}
+{"arm": "beam", "sf": 1.0, "transformation": "t5", "run": 2, "seconds": 1050.4913, "rows_out": 6001215}
+{"arm": "beam", "sf": 1.0, "transformation": "t6", "run": 2, "seconds": 78.6499, "rows_out": 10}
+{"arm": "beam", "sf": 1.0, "transformation": "setup", "run": 3, "seconds": 1.3348, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline", "runner_options": "direct_num_workers=1, job_server_timeout=3600"}
+{"arm": "beam", "sf": 1.0, "transformation": "t1", "run": 3, "seconds": 314.7817, "rows_out": 914963}
+{"arm": "beam", "sf": 1.0, "transformation": "t2", "run": 3, "seconds": 1269.2299, "rows_out": 6001215}
+{"arm": "beam", "sf": 1.0, "transformation": "t3", "run": 3, "seconds": 506.6334, "rows_out": 2406}
+{"arm": "beam", "sf": 1.0, "transformation": "t4", "run": 3, "seconds": 1022.5742, "rows_out": 6001215}
+{"arm": "beam", "sf": 1.0, "transformation": "t5", "run": 3, "seconds": 1052.9966, "rows_out": 6001215}
+{"arm": "beam", "sf": 1.0, "transformation": "t6", "run": 3, "seconds": 80.8431, "rows_out": 10}
+{"arm": "beam", "sf": 1.0, "transformation": "setup", "run": 4, "seconds": 1.1943, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline", "runner_options": "direct_num_workers=1, job_server_timeout=3600"}
+{"arm": "beam", "sf": 1.0, "transformation": "t1", "run": 4, "seconds": 320.0022, "rows_out": 914963}
+{"arm": "beam", "sf": 1.0, "transformation": "t2", "run": 4, "seconds": 1258.222, "rows_out": 6001215}
+{"arm": "beam", "sf": 1.0, "transformation": "t3", "run": 4, "seconds": 511.9685, "rows_out": 2406}
+{"arm": "beam", "sf": 1.0, "transformation": "t4", "run": 4, "seconds": 1021.5168, "rows_out": 6001215}
+{"arm": "beam", "sf": 1.0, "transformation": "t5", "run": 4, "seconds": 1067.1444, "rows_out": 6001215}
+{"arm": "beam", "sf": 1.0, "transformation": "t6", "run": 4, "seconds": 84.1362, "rows_out": 10}
+{"arm": "beam", "sf": 1.0, "transformation": "setup", "run": 5, "seconds": 1.2337, "rows_out": null, "beam_setup": "runner_service_start_empty_pipeline", "runner_options": "direct_num_workers=1, job_server_timeout=3600"}
+{"arm": "beam", "sf": 1.0, "transformation": "t1", "run": 5, "seconds": 316.8562, "rows_out": 914963}
+{"arm": "beam", "sf": 1.0, "transformation": "t2", "run": 5, "seconds": 1257.2391, "rows_out": 6001215}
+{"arm": "beam", "sf": 1.0, "transformation": "t3", "run": 5, "seconds": 509.1915, "rows_out": 2406}
+{"arm": "beam", "sf": 1.0, "transformation": "t4", "run": 5, "seconds": 1021.5754, "rows_out": 6001215}
+{"arm": "beam", "sf": 1.0, "transformation": "t5", "run": 5, "seconds": 1047.8382, "rows_out": 6001215}
+{"arm": "beam", "sf": 1.0, "transformation": "t6", "run": 5, "seconds": 82.4969, "rows_out": 10}
